@@ -1,56 +1,47 @@
-const natalia = {
-  name: "Natalia",
-  age: 20,
-  cursosAprobados: [
-    "Curso Definitivo de HTML y CSS",
-    "Curso Práctico de HTML y CSS",
-  ],
-
-  aprobarCurso(nuevoCurso) {
-    this.cursosAprobados.push(nuevoCurso);
-  },
-};
-
-// Natalia aprueba otro curso.
-natalia.cursosAprobados.push("Curso de Responsive Design");
-
-function Student(name, age, cursosAprobados) {
-  this.name = name;
-  this.age = age;
-  this.cursosAprobados = cursosAprobados;
-  // this.aprobarCurso = function(nuevoCurso) {
-  // 	this.cursosAprobados.push(nuevoCurso);
-  // }
-}
-
-Student.prototype.aprobarCurso = function (nuevoCurso) {
-  this.cursosAprobados.push(nuevoCurso);
-};
-
-const juanita = new Student("Juanita Alejandra", 15, [
-  "Curso de Introducción a la Producción de Videojuegos",
-  "Curso de Creación de Personajes",
-]);
-
-// Prototipos con la sintaxis de clases
-class Student2 {
-  constructor({ name, age, cursosAprobados = [], email }) {
+class learningPaths {
+  constructor({ name, courses = [] }) {
     this.name = name;
-    this.age = age;
-    this.cursosAprobados = cursosAprobados;
-  }
-
-  aprobarCurso(nuevoCurso) {
-    this.cursosAprobados.push(nuevoCurso);
+    this.courses = courses;
   }
 }
 
-const miguelito = new Student2({
-  email: "miguelito@platzi.com",
-  name: "Miguel",
-  age: 28,
-  cursosAprobados: [
-    "Curso de Análisis de Negocios para Ciencia de Datos",
-    "Curso de Introducción a la Producción de Videojuegos",
+const escuelaWeb = new learningPaths({
+  name: "Escuela de desarrollo web",
+  courses: [
+    "Curso definitivo de HTML y CSS",
+    "Curso práctico de HTML y CSS",
+    "Curso de responsive design",
   ],
+});
+
+class Student {
+  constructor({
+    name,
+    email,
+    username,
+    twitter = undefined,
+    instagram = undefined,
+    facebook = undefined,
+    approvedCourses = [],
+    learningPaths = [],
+  }) {
+    this.name = name;
+    this.email = email;
+    this.username = username;
+    this.socialMedia = {
+      twitter,
+      instagram,
+      facebook,
+    };
+    this.approvedCourses = approvedCourses;
+    this.learningPaths = learningPaths;
+  }
+}
+
+const ramon2 = new Student({
+  name: "ramonruiz",
+  username: "ramonruizdev",
+  email: "ramonruizdev@gmail.com",
+  twitter: "ramonruizdev",
+  learningPaths: [escuelaWeb],
 });
