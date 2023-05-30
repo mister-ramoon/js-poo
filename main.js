@@ -1,47 +1,50 @@
-class learningPaths {
+class Course {
+  constructor({ name, classes = [] }) {
+    this.name = name;
+    this.classes = classes;
+  }
+}
+
+const cursoProgBasica = new Course({
+  name: "Curso Gratis de Programación Básica",
+});
+
+const cursoDefinitivoHTML = new Course({
+  name: "Curso Definitivo de HTML y CSS",
+});
+
+const cursoPracticoHTML = new Course({
+  name: "Curso Practico de HTML y CSS",
+});
+
+class LearingPath {
   constructor({ name, courses = [] }) {
     this.name = name;
     this.courses = courses;
   }
 }
 
-const escuelaWeb = new learningPaths({
+const escuelaWeb = new LearingPath({
   name: "Escuela de desarrollo web",
+  courses: [cursoProgBasica, cursoDefinitivoHTML, cursoPracticoHTML],
+});
+
+const escuelaData = new LearingPath({
+  name: "Escuela de Data Science",
   courses: [
-    "Curso definitivo de HTML y CSS",
-    "Curso práctico de HTML y CSS",
-    "Curso de responsive design",
+    cursoProgBasica,
+    "Curso Básico de Bases de Datos",
+    "Curso de Terminal para Bases de Datos",
+    "Curso de Python",
   ],
 });
 
-class Student {
-  constructor({
-    name,
-    email,
-    username,
-    twitter = undefined,
-    instagram = undefined,
-    facebook = undefined,
-    approvedCourses = [],
-    learningPaths = [],
-  }) {
-    this.name = name;
-    this.email = email;
-    this.username = username;
-    this.socialMedia = {
-      twitter,
-      instagram,
-      facebook,
-    };
-    this.approvedCourses = approvedCourses;
-    this.learningPaths = learningPaths;
-  }
-}
-
-const ramon2 = new Student({
-  name: "ramonruiz",
-  username: "ramonruizdev",
-  email: "ramonruizdev@gmail.com",
-  twitter: "ramonruizdev",
-  learningPaths: [escuelaWeb],
+const escuelaVgs = new LearingPath({
+  name: "Escuela de Video Juegos",
+  courses: [
+    cursoProgBasica,
+    "Curso de Introducción a Video Juegos",
+    "Curso de Unreal Engine",
+    "Curso de Unity 3D",
+  ],
 });
