@@ -1,7 +1,23 @@
 class Course {
   constructor({ name, classes = [] }) {
-    this.name = name;
+    this._name = name;
     this.classes = classes;
+  }
+
+  // changeName(newName) {
+  //   this._name = newName;
+  // }
+
+  get name() {
+    return this._name;
+  }
+
+  set name(newName) {
+    if (newName === "Curso Malito de Programación Básica") {
+      console.error("Web... no");
+    } else {
+      this._name = newName;
+    }
   }
 }
 
@@ -9,9 +25,14 @@ const cursoProgBasica = new Course({
   name: "Curso Gratis de Programación Básica",
 });
 
+//cursoProgBasica.changeName("Nuevo Curso Gratis de Programación Básica");
+cursoProgBasica.name = "Nuevo Curso Gratis de Programación Básica";
+
 const cursoDefinitivoHTML = new Course({
   name: "Curso Definitivo de HTML y CSS",
 });
+
+cursoDefinitivoHTML.name = "Curso Malito de Programación Básica";
 
 const cursoPracticoHTML = new Course({
   name: "Curso Practico de HTML y CSS",
